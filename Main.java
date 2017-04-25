@@ -33,6 +33,9 @@ public class Main {
 				
 				file.createNewFile();
 			}
+			else{
+				file.createNewFile();
+			}
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
