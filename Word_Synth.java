@@ -1,10 +1,11 @@
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 
 /**
  *
  * @author Emilio Solis
- * @author David Lane
+ * Edit: @author David Lane
  * 
  */
 //Generates files that will contain the most likely pair of words,
@@ -14,11 +15,14 @@ public class Word_Synth {
 	
     public static void doSave() {
     	//File that will be used for generating, after being modified
-        File file = new File("C:\\tweets2009v3.txt");
+        File file = new File("/Users/David Lane/workspace/Trump Twitter Generator/bin/Trump Tweets Since 2009.txt");
+
         FileInputStream fis = null;
         BufferedInputStream bis = null;
         BufferedReader dis;
 
+        
+        
         try {
             String sCurrentLine;
             fis = new FileInputStream(file);
@@ -65,7 +69,7 @@ public class Word_Synth {
             System.out.println("Creating File/Object output stream...");
 
             //Generate all the Files fitted with N-Gram Phrases and Words
-            FileOutputStream fileOut = new FileOutputStream("C:\\HTwords.ser");
+            FileOutputStream fileOut = new FileOutputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/HTwords.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
             System.out.println("Writing Hashtable Object...");
@@ -76,28 +80,28 @@ public class Word_Synth {
             fileOut.close();
 
             //2-Forward Words File
-            FileOutputStream bifileOut = new FileOutputStream("C:\\BiFwords.ser");
+            FileOutputStream bifileOut = new FileOutputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/BiFwords.ser");
             ObjectOutputStream biout = new ObjectOutputStream(bifileOut);
             biout.writeObject(biFwords);
             biout.close();
             bifileOut.close();
             
             //2-Backwards Words File
-            FileOutputStream biBfileOut = new FileOutputStream("C:\\BiBwords.ser");
+            FileOutputStream biBfileOut = new FileOutputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/BiBwords.ser");
             ObjectOutputStream biBout = new ObjectOutputStream(biBfileOut);
             biBout.writeObject(biBwords);
             biBout.close();
             biBfileOut.close();
 
             //3-Forward Words File
-            FileOutputStream thFfileOut = new FileOutputStream("C:\\ThFwords.ser");
+            FileOutputStream thFfileOut = new FileOutputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/ThFwords.ser");
             ObjectOutputStream thFout = new ObjectOutputStream(thFfileOut);
             thFout.writeObject(thFwords);
             thFout.close();
             thFfileOut.close();
 
             //3-Backwards Words File
-            FileOutputStream thBfileOut = new FileOutputStream("C:\\ThBwords.ser");
+            FileOutputStream thBfileOut = new FileOutputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/ThBwords.ser");
             ObjectOutputStream thBout = new ObjectOutputStream(thBfileOut);
             thBout.writeObject(thBwords);
             thBout.close();
@@ -245,7 +249,7 @@ public class Word_Synth {
 
             System.out.println("Creating File/Object input stream...");
 
-            FileInputStream fileIn = new FileInputStream("C:\\HTwords.ser");
+            FileInputStream fileIn = new FileInputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/HTwords.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
             System.out.println("Loading Hashtable Object...");
@@ -273,7 +277,7 @@ public class Word_Synth {
 
         try {
 
-            FileInputStream fileIn = new FileInputStream("C:\\BiFwords.ser");
+            FileInputStream fileIn = new FileInputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/BiFwords.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             h = (Hashtable) in.readObject();
             in.close();
@@ -295,7 +299,7 @@ public class Word_Synth {
 
         try {
 
-            FileInputStream fileIn = new FileInputStream("C:\\BiBwords.ser");
+            FileInputStream fileIn = new FileInputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/BiBwords.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             h = (Hashtable) in.readObject();
             in.close();
@@ -317,7 +321,7 @@ public class Word_Synth {
 
         try {
 
-            FileInputStream fileIn = new FileInputStream("C:\\ThFwords.ser");
+            FileInputStream fileIn = new FileInputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/ThFwords.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             h = (Hashtable) in.readObject();
             in.close();
@@ -339,7 +343,7 @@ public class Word_Synth {
 
         try {
 
-            FileInputStream fileIn = new FileInputStream("C:\\ThBwords.ser");
+            FileInputStream fileIn = new FileInputStream("/Users/David Lane/workspace/Trump Twitter Generator/bin/ThBwords.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             h = (Hashtable) in.readObject();
             in.close();

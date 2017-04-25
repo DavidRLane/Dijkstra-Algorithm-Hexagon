@@ -14,13 +14,29 @@ import java.util.*;
  * 
  */
 public class Main {
-	private static final String FILENAME = "Downloads\\Twitter Output.txt";
+	private static final String FILENAME = "/Users/David Lane/workspace/Trump Twitter Generator/bin/Trump Generator Output.txt";
 	
     public static void main(String[] args) {
-        Hashtable word = doLoad("C:\\HTwords.ser");
+        Hashtable word = doLoad("/Users/David Lane/workspace/Trump Twitter Generator/bin/HTwords.ser");
 
         BufferedWriter bw = null;
 		FileWriter fw = null;
+		
+		File file = new File(FILENAME);
+		
+		//Generates a new output file if it already exists
+		try{
+			if(file.exists()){
+				file.delete();
+				
+				System.out.println("File Exists, Creating Clean File");
+				
+				file.createNewFile();
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
 		
         try { 
         	//Loading an Array with Different Words
@@ -34,8 +50,8 @@ public class Main {
             }
 
             //Load the different Hashtables
-            Hashtable biFword = doLoad("C:\\BiFwords.ser");
-            Hashtable biBword = doLoad("C:\\BiBwords.ser");
+            Hashtable biFword = doLoad("/Users/David Lane/workspace/Trump Twitter Generator/bin/BiFwords.ser");
+            Hashtable biBword = doLoad("/Users/David Lane/workspace/Trump Twitter Generator/bin/BiBwords.ser");
 
             //Loading the 2 Forward Words
             int BiF_index = biFword.size();
@@ -135,15 +151,15 @@ public class Main {
                 	sentence = count + ") " + sentence + ".";
                 	System.out.println(sentence);
                 }
-                
-                String content = "This is the content to write into file\n";
 
+                //Writing Output to Output File "Trump Generator Output.txt"
         		try{
-        			fw = new FileWriter(FILENAME);
+        			fw = new FileWriter(file,true);
         			bw = new BufferedWriter(fw);
 
-        			bw.write(sentence);
-
+        			bw.append(sentence);
+        			bw.append('\n');
+        			
         			System.out.println("Done");
 
         		} catch(IOException e) {
@@ -163,6 +179,7 @@ public class Main {
 
         			}
         		}
+        		
             }
             System.exit(0);
             
