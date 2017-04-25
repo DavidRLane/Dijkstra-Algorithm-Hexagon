@@ -14,7 +14,7 @@ public class Word_Synth {
 	
     public static void doSave() {
     	//File that will be used for generating, after being modified
-        File file = new File("C:\\Shakespeare_RE.txt");
+        File file = new File("C:\\tweets2009v3.txt");
         FileInputStream fis = null;
         BufferedInputStream bis = null;
         BufferedReader dis;
@@ -28,7 +28,6 @@ public class Word_Synth {
             dis = new BufferedReader(new InputStreamReader(bis));
             
             // Map the words using a Hashtable
-            @SuppressWarnings("rawtypes")
 			Hashtable words = new Hashtable();
             @SuppressWarnings("rawtypes")
 			Hashtable biFwords = new Hashtable();

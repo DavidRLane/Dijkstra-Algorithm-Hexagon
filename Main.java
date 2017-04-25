@@ -14,9 +14,14 @@ import java.util.*;
  * 
  */
 public class Main {
+	private static final String FILENAME = "Downloads\\Twitter Output.txt";
+	
     public static void main(String[] args) {
         Hashtable word = doLoad("C:\\HTwords.ser");
 
+        BufferedWriter bw = null;
+		FileWriter fw = null;
+		
         try { 
         	//Loading an Array with Different Words
             int index = word.size();
@@ -102,7 +107,7 @@ public class Main {
 
                     //Generates a sentence to an arbitrary length (80)
                     //There may be words with '!', '?' or other variations in the sentences
-                    if ((pivot.equals("</s>") && sentence.length() > 15) || sentence.length() > 80) // End Sentence
+                    if ((pivot.equals("</s>") && sentence.length() > 15) || sentence.length() > 140) // End Sentence
                     {
                         flag = true;
                     } else {
@@ -111,8 +116,53 @@ public class Main {
                         }
                     }
                 }
+                //Formatting the Sentence to have better Punctuation
                 sentence = (sentence.substring(0, 1)).toUpperCase() + sentence.substring(1);
-                System.out.println(count + ") " + sentence);
+                char endChar = sentence.charAt(sentence.length()-1);
+                   
+                if(endChar == '!' || endChar == '?' || endChar == '.'){
+                	sentence = count + ") " + sentence;
+                	System.out.println(sentence);
+                	
+                }
+                else if(endChar == ',' || endChar == ';' || endChar == ':' ){
+                	sentence = sentence.substring(0,sentence.length()-1);
+           
+                	sentence = count + ") " + sentence + ".";
+                	System.out.println(sentence);
+                }
+                else{
+                	sentence = count + ") " + sentence + ".";
+                	System.out.println(sentence);
+                }
+                
+                String content = "This is the content to write into file\n";
+
+        		try{
+        			fw = new FileWriter(FILENAME);
+        			bw = new BufferedWriter(fw);
+
+        			bw.write(sentence);
+
+        			System.out.println("Done");
+
+        		} catch(IOException e) {
+        			e.printStackTrace();
+        		
+        		} finally {
+        			try {
+        				if (bw != null)
+        					bw.close();
+
+        				if (fw != null)
+        					fw.close();
+
+        			} catch (IOException ex) {
+
+        				ex.printStackTrace();
+
+        			}
+        		}
             }
             System.exit(0);
             
