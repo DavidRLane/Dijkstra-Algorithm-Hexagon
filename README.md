@@ -1,3 +1,0 @@
-# Trump-Twitter-Generator
-
-In order to use the Word_Synth.java file, create a java project in Eclipse, or whatever editor you are using, and then put the java files inside your project file. The text files must be put under "C://" in order to run. Run "Word_Synth.java" first; this is the file that will create the hashtables for all of the words to be used later. It will ask if you want to create a new file or not, if you have not run the program before enter "y", or if you would like new words generated based on a new file being used. Once you have generated the files that will be used for the other java file "Main.java", run Main.java and wait for the sentence generator.
