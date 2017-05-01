@@ -14,32 +14,21 @@ import java.util.*;
  * 
  */
 public class Main {
-	private static final String FILENAME = "/Users/David Lane/workspace/Trump Twitter Generator/bin/Trump Generator Output.txt";
+	private static final String FILENAME = "Generator Output.txt";
 	
     public static void main(String[] args) {
-        Hashtable word = doLoad("/Users/David Lane/workspace/Trump Twitter Generator/bin/HTwords.ser");
+        Hashtable word = doLoad("HTwords.ser");
 
         BufferedWriter bw = null;
 		FileWriter fw = null;
 		
 		File file = new File(FILENAME);
 		
-		//Generates a new output file if it already exists
-		try{
-			if(file.exists()){
-				file.delete();
-				
-				System.out.println("File Exists, Creating Clean File");
-				
-				file.createNewFile();
-			}
-			else{
-				file.createNewFile();
-			}
-		} catch(IOException e) {
-			e.printStackTrace();
+		if(file.exists()){
+			System.out.println("Generating a clean file");
+			file.delete();
+			
 		}
-		
 		
         try { 
         	//Loading an Array with Different Words
@@ -53,8 +42,8 @@ public class Main {
             }
 
             //Load the different Hashtables
-            Hashtable biFword = doLoad("/Users/David Lane/workspace/Trump Twitter Generator/bin/BiFwords.ser");
-            Hashtable biBword = doLoad("/Users/David Lane/workspace/Trump Twitter Generator/bin/BiBwords.ser");
+            Hashtable biFword = doLoad("BiFwords.ser");
+            Hashtable biBword = doLoad("BiBwords.ser");
 
             //Loading the 2 Forward Words
             int BiF_index = biFword.size();
@@ -154,17 +143,15 @@ public class Main {
                 	sentence = count + ") " + sentence + ".";
                 	System.out.println(sentence);
                 }
-
-                //Writing Output to Output File "Trump Generator Output.txt"
+                
         		try{
-        			fw = new FileWriter(file,true);
+        			fw = new FileWriter(FILENAME);
         			bw = new BufferedWriter(fw);
 
-        			bw.append(sentence);
-        			bw.append('\n');
         			
-        			System.out.println("Done");
-
+        			
+        			bw.write(sentence);
+        			
         		} catch(IOException e) {
         			e.printStackTrace();
         		
@@ -182,7 +169,6 @@ public class Main {
 
         			}
         		}
-        		
             }
             System.exit(0);
             
