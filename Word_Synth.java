@@ -1,10 +1,11 @@
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 
 /**
  *
  * @author Emilio Solis
- * @author David Lane
+ * Edit: @author David Lane
  * 
  */
 //Generates files that will contain the most likely pair of words,
@@ -14,11 +15,14 @@ public class Word_Synth {
 	
     public static void doSave() {
     	//File that will be used for generating, after being modified
-        File file = new File("TwitterOutput.txt");
+        File file = new File("Trump Tweets Since 2009.txt");
+
         FileInputStream fis = null;
         BufferedInputStream bis = null;
         BufferedReader dis;
 
+        
+        
         try {
             String sCurrentLine;
             fis = new FileInputStream(file);
