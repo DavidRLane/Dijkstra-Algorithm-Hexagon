@@ -2,16 +2,16 @@ import java.util.List;
 
 //Graph Type for the general manipulation of the hexagon grid
 public class Graph {
-        private final List<Vertex> vertexes;
+        private final List<Point> points;
         private final List<Edge> edges;
 
-        public Graph(List<Vertex> vertexes, List<Edge> edges) {
-                this.vertexes = vertexes;
+        public Graph(List<Point> points, List<Edge> edges) {
+                this.points = points;
                 this.edges = edges;
         }
 
-        public List<Vertex> getVertexes() {
-                return vertexes;
+        public List<Point> getPoints() {
+                return points;
         }
 
         public List<Edge> getEdges() {

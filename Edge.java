@@ -1,20 +1,20 @@
 //Weights of Nodes are based on their traversal; Edge cost is counted
 public class Edge  {
-        private final Vertex source;
-        private final Vertex destination;
+        private final Point source;
+        private final Point destination;
         private final int weight;
 
-        public Edge(Vertex source, Vertex destination, int weight) {
+        public Edge(Point source, Point destination, int weight) {
                 this.source = source;
                 this.destination = destination;
                 this.weight = weight;
         }
 
-        public Vertex getDestination() {
+        public Point getDestination() {
                 return destination;
         }
 
-        public Vertex getSource() {
+        public Point getSource() {
                 return source;
         }
         public int getWeight() {
