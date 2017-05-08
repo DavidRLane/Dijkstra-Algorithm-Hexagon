@@ -7,7 +7,7 @@ public class InputGenerator {
 			System.out.println("Writing to Hex Input.txt");
 	    	PrintWriter writer = new PrintWriter("Hex Input.txt", "UTF-8");
 	    
-	    	for(int i=1; i<235; i++){
+	    	for(int i=1; i<234; i++){
 	    	writer.println(i + " " + (int)Math.ceil(Math.random() * 9));
 	    	}
 	    	writer.close();

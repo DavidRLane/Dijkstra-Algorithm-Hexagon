@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +13,9 @@ public class Main {
 		//Elements of the Graph
         private static List<Point> nodes;
         private static List<Edge> edges;
-
+        
+        
+        
         //Execution Function that sets up the graph with the given inputs
         //Adds all the edges as though the graph were set to be a hexagon
         //Fixed size of 232 elements; offset to be 1 to 233
@@ -30,7 +35,7 @@ public class Main {
                 int[] inputArr = new int[233];
                 try {
              	   String sCurrentLine; 
-                    BufferedReader br = new BufferedReader(new FileReader("input.txt"));
+                    BufferedReader br = new BufferedReader(new FileReader("INPUT.TXT"));
                     
                     //Read Inputs until Null
              	   outerloop:
@@ -145,14 +150,27 @@ public class Main {
                 //Ending Point
                 LinkedList<Point> path = dijAlgo.getPath(nodes.get(7));
                 
+                //Create File
+                PrintWriter writer = null;
+				try {
+					writer = new PrintWriter("OUTPUT.TXT", "UTF-8");
+				} catch (FileNotFoundException | UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                
+                
                 //Print the shortest path; Node path and then Minimum Cost
                 for (Point point : path) {
                         System.out.println(point);
                         distance += inputArr[(Integer.parseInt(point.getId()))-1];
+                        
+                        writer.println(point);
                 }
                 System.out.println("MINIMAL-COST PATH COSTS: " + distance);
+                writer.println("MINIMAL-COST PATH COSTS: " + distance);
                 
-                
+                writer.close();
 
         }
 
